@@ -1,105 +1,55 @@
-/* GENERAL LAYOUT */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f7f7f7;
   margin: 0;
-  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5dc; /* Beige */
+  color: black;
 }
 
 .App {
+  text-align: center;
+}
+
+nav {
+  background-color: #1e3a5f; /* Dark Blue */
+  color: white;
   padding: 20px;
 }
 
-/* NAVIGATION */
-nav {
-  background-color: #333;
-  padding: 10px;
-  margin-bottom: 20px;
+.navLinks {
+  margin-top: 10px;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li a {
+.navLinks a {
   color: white;
   text-decoration: none;
+  margin: 0 15px;
   font-weight: bold;
 }
 
-nav ul li a:hover {
-  text-decoration: underline;
+.navLinks a:hover {
+  color: #add8e6; /* Light Blue */
 }
 
-/* STREAMLIST PAGE */
-.page {
-  background: white;
+.container {
+  width: 80%;
+  margin: auto;
   padding: 20px;
-  border-radius: 8px;
 }
 
-.page h1 {
-  color: #333;
-}
-
-.page p {
-  font-size: 1.1em;
-  margin-bottom: 15px;
-}
-
-/* MOVIE LIST */
-.movie-list {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.movie-list ul {
+.movieList {
   list-style: none;
   padding: 0;
 }
 
-.movie-list li {
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.movie-list li:last-child {
-  border-bottom: none;
-}
-
-/* FORM ELEMENTS */
-input {
-  padding: 6px;
-  margin-right: 10px;
+.movieList li {
+  background-color: #fffaf0; /* Light beige/cream */
   margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  color: black;
 }
 
-button {
-  margin-right: 10px;
-  padding: 6px 12px;
-  border: none;
-  background-color: #0077cc;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #005fa3;
-}
-
-/* GENERAL LISTS */
-ul {
-  padding: 0;
-}
-
-li {
-  list-style: none;
+.completed {
+  text-decoration: line-through;
+  color: gray;
 }

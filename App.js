@@ -1,41 +1,66 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
 
 import StreamList from "./StreamList";
 import Movies from "./Movies";
 import Cart from "./Cart";
 import About from "./About";
+import "./App.css";
 
 function App() {
   const [movies, setMovies] = useState([]);
 
-  const addMovie = (movie) => {
-    setMovies([...movies, movie]);
+  const addMovie = (title) => {
+    const newMovie = {
+      id: Date.now(),
+      title: title,
+      completed: false,
+    };
+
+    setMovies([...movies, newMovie]);
+  };
+
+  const deleteMovie = (id) => {
+    setMovies(movies.filter((movie) => movie.id !== id));
+  };
+
+  const toggleComplete = (id) => {
+    setMovies(
+      movies.map((movie) =>
+        movie.id === id
+          ? { ...movie, completed: !movie.completed }
+          : movie
+      )
+    );
+  };
+
+  const editMovie = (id, newTitle) => {
+    setMovies(
+      movies.map((movie) =>
+        movie.id === id
+          ? { ...movie, title: newTitle }
+          : movie
+      )
+    );
   };
 
   return (
     <Router>
       <div className="App">
-
         <nav>
-          <ul>
-            <li>
-              <Link to="/">StreamList</Link>
-            </li>
+          <h1>StreamList</h1>
 
-            <li>
-              <Link to="/movies">Movies</Link>
-            </li>
-
-            <li>
-              <Link to="/cart">Cart</Link>
-            </li>
-
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
+          <div className="navLinks">
+            <Link to="/">Home</Link>
+            <Link to="/movies">Movies</Link>
+            <Link to="/cart">Cart</Link>
+            <Link to="/about">About</Link>
+          </div>
         </nav>
 
         <Routes>
@@ -45,31 +70,17 @@ function App() {
               <StreamList
                 movies={movies}
                 addMovie={addMovie}
+                deleteMovie={deleteMovie}
+                toggleComplete={toggleComplete}
+                editMovie={editMovie}
               />
             }
           />
 
-          <Route
-            path="/movies"
-            element={<Movies />}
-          />
-
-          <Route
-            path="/cart"
-            element={<Cart />}
-          />
-
-          <Route
-            path="/about"
-            element={<About />}
-          />
-
-          <Route
-            path="*"
-            element={<h2>Page Not Found</h2>}
-          />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/about" element={<About />} />
         </Routes>
-
       </div>
     </Router>
   );
